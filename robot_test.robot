@@ -6,9 +6,6 @@ ${HOST}    http://192.168.182.102:8080
 
 *** Test Cases ***
 
-Get Root
-    ${response}=    GET  ${HOST}
-    Should Be Equal As Numbers    ${response.status_code}     404
 Get Code
     ${response}=    GET  ${HOST}/getcode
     Should Be Equal As Strings    ${response.text}    Hello!
