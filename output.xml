@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0.1 (Python 3.11.5 on win32)" generated="2024-09-25T02:34:28.793764" rpa="false" schemaversion="5">
+<suite id="s1" name="Robot Test" source="D:\Programming\Python\SDPXJenkinsRobot\robot_test.robot">
+<test id="s1-t1" name="Get Root" line="9">
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2024-09-25T02:34:29.144281" level="INFO">GET Request : url=http://192.168.182.103:8080/ 
+ path_url=/ 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2024-09-25T02:34:29.145280" level="INFO">GET Response : url=http://192.168.182.103:8080/ 
+ status=404, reason=NOT FOUND 
+ headers={'Server': 'Werkzeug/3.0.4 Python/3.12.6', 'Date': 'Tue, 24 Sep 2024 18:35:00 GMT', 'Content-Type': 'text/html; charset=utf-8', 'Content-Length': '207', 'Connection': 'close'} 
+ body=&lt;!doctype html&gt;
+&lt;html lang=en&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.&lt;/p&gt;
+ 
+ </msg>
+<msg time="2024-09-25T02:34:29.145280" level="FAIL">HTTPError: 404 Client Error: NOT FOUND for url: http://192.168.182.103:8080/</msg>
+<var>${response}</var>
+<arg>${HOST}</arg>
+<doc>Sends a GET request.</doc>
+<status status="FAIL" start="2024-09-25T02:34:29.125524" elapsed="0.021754">HTTPError: 404 Client Error: NOT FOUND for url: http://192.168.182.103:8080/</status>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>1</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" start="2024-09-25T02:34:29.149016" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2024-09-25T02:34:29.124509" elapsed="0.025518">HTTPError: 404 Client Error: NOT FOUND for url: http://192.168.182.103:8080/</status>
+</test>
+<test id="s1-t2" name="Get Code" line="12">
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2024-09-25T02:34:29.164760" level="INFO">GET Request : url=http://192.168.182.103:8080/getcode 
+ path_url=/getcode 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2024-09-25T02:34:29.164760" level="INFO">GET Response : url=http://192.168.182.103:8080/getcode 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/3.0.4 Python/3.12.6', 'Date': 'Tue, 24 Sep 2024 18:35:00 GMT', 'Content-Type': 'text/html; charset=utf-8', 'Content-Length': '6', 'Connection': 'close'} 
+ body=Hello! 
+ </msg>
+<msg time="2024-09-25T02:34:29.165774" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${HOST}/getcode</arg>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2024-09-25T02:34:29.150027" elapsed="0.015747"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${response.text}</arg>
+<arg>Hello!</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-09-25T02:34:29.165774" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-09-25T02:34:29.150027" elapsed="0.016747"/>
+</test>
+<test id="s1-t3" name="Get Plus 1 2" line="16">
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2024-09-25T02:34:29.182066" level="INFO">GET Request : url=http://192.168.182.103:8080/plus/1/2 
+ path_url=/plus/1/2 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2024-09-25T02:34:29.182066" level="INFO">GET Response : url=http://192.168.182.103:8080/plus/1/2 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/3.0.4 Python/3.12.6', 'Date': 'Tue, 24 Sep 2024 18:35:01 GMT', 'Content-Type': 'application/json', 'Content-Length': '15', 'Connection': 'close'} 
+ body={"result":3.0}
+ 
+ </msg>
+<msg time="2024-09-25T02:34:29.183075" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${HOST}/plus/1/2</arg>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2024-09-25T02:34:29.167774" elapsed="0.015301"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<msg time="2024-09-25T02:34:29.184081" level="FAIL">{"result":3.0}
+ != {"result":3.0}</msg>
+<arg>${response.text}</arg>
+<arg>{"result":3.0}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="FAIL" start="2024-09-25T02:34:29.183075" elapsed="0.001006">{"result":3.0}
+ != {"result":3.0}</status>
+</kw>
+<status status="FAIL" start="2024-09-25T02:34:29.166774" elapsed="0.017307">{"result":3.0}
+ != {"result":3.0}</status>
+</test>
+<status status="FAIL" start="2024-09-25T02:34:28.794765" elapsed="0.390306"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="2" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="2" skip="0" id="s1" name="Robot Test">Robot Test</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
