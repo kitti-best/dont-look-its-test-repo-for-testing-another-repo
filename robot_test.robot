@@ -2,7 +2,7 @@
 Library               RequestsLibrary
 
 *** Variables ***
-${HOST}    http://192.168.182.102:8080
+${HOST}    http://192.168.182.102:5000
 
 *** Test Cases ***
 
